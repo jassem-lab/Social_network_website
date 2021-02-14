@@ -4,9 +4,12 @@ const userController = require("../controllers/user.controller");
 
 // Auth
 router.post("/register/", authController.signUp);
-// User display : "block" 
 
-router.get('/', userController.getAllUsers)
-router.get('/:id', userController.userInfo)
+// User CRUD APIs
+
+router.get("/", userController.getAllUsers);
+router.get("/:id", userController.userInfo);
+router.put("/:id", userController.updateUser);
+router.delete("/:id", userController.deleteUser);
 
 module.exports = router;
