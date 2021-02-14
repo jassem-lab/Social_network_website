@@ -3,7 +3,7 @@ const { isEmail } = require("validator");
 
 const userSchema = new mongoose.Schema(
   {
-    pseudo: {
+    username: {
       type: String,
       required: true,
       minLength: 3,
@@ -31,5 +31,5 @@ const userSchema = new mongoose.Schema(
 
 
 
-module.exports = mongoose.model("User", userSchema )
+module.exports = mongoose.model("user", userSchema )
 

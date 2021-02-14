@@ -1,12 +1,18 @@
 const UserModel = require("../models/user.model");
 
 module.exports.signUp = async (req, res) => {
-  const { pseudo, email, password } = req.body;
+  const { username, email, password } = req.body;
 
   try {
-    const user = await UserModel.create({ pseudo, email, password });
-    req.status(201).json({ user: user._id });
+    const User = await UserModel.create({ username, email, password });
+    req.status(201).json({ user: User._id });
   } catch (err) {
-    res.status(200).send({ err });
+
+    if (err.code == "11000" ){
+      console.log("user already exist");
+    }else{
+       res.status(200).send({ err });
+    }
+   
   }
 };

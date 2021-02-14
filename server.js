@@ -13,13 +13,14 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(console.log("====== Database Connected ======"));
+  .then(console.log("====== Database Connected ======")); 
 
 // Routes
 
+app.use(express.json())
 app.use("/api/user", userRoutes);
 
-// Server
+// Server Running 
 
 app.listen(process.env.PORT, () => {
   console.log(`====== Server listening on port ${process.env.PORT} ======`);
