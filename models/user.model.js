@@ -25,11 +25,19 @@ const userSchema = new mongoose.Schema(
       minLength: 6,
       maxLength: 500,
     },
+    bio: {
+      type: String,
+      max: 1024,
+    },
+    followers: {
+      type: [String],
+    },
+    likes: {
+      type: [String],
+    },
   },
+
   { timestamp: true }
 );
 
-
-
-module.exports = mongoose.model("user", userSchema )
-
+module.exports = mongoose.model("user", userSchema);
