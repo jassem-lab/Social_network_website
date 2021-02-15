@@ -19,7 +19,7 @@ module.exports.signUp = async (req, res) => {
     if (err.code == "11000") {
       console.log("user already exist");
     } else {
-      res.status(200).send({ err });
+      res.status(200).send({ message: err });
     }
   }
 };
@@ -33,9 +33,14 @@ module.exports.signIn = async (req, res) => {
     const token = CreateToken(user._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge });
     res.status(200).json({ user: user._id });
-  } catch (err) {}
+  } catch (err) {
+    res.status(200).send({ message: err });
+  }
 };
 
 // LogOut
 
-module.exports.logOut = (req, res) => {};
+module.exports.logOut = (req, res) => {
+  res.cookie("jwt", "", { maxAge: 1 });
+  res.redirect("/");
+};
