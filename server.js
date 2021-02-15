@@ -4,7 +4,7 @@ require("dotenv").config({ path: "./config/.env" });
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/user.routes");
 const cookieParser = require("cookie-parser");
-const { checkUser } = require("./middleware/auth.middleware");
+const { checkUser, requireAuth } = require("./middleware/auth.middleware");
 
 // Database settings
 
@@ -28,6 +28,9 @@ app.use("/api/user", userRoutes);
 // JWT
 
 app.get("*", checkUser);
+app.get("/jwtid", requireAuth, (req, res) => {
+  res.status(200).send(res.locals.user._id);
+});
 
 // Server Running
 
