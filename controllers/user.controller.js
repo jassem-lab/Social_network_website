@@ -39,6 +39,7 @@ module.exports.updateUser = async (req, res) => {
   }
 };
 
+
 // Delete User
 
 module.exports.deleteUser = async (req, res) => {
