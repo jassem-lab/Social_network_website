@@ -3,6 +3,7 @@ const app = express();
 require("dotenv").config({ path: "./config/.env" });
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/user.routes");
+const postRoutes = require("./routes/post.routes");
 const cookieParser = require("cookie-parser");
 const { checkUser, requireAuth } = require("./middleware/auth.middleware");
 
@@ -24,7 +25,7 @@ app.use(express.json());
 // Routes
 
 app.use("/api/user", userRoutes);
-
+app.use("/api/post", postRoutes);
 // JWT
 
 app.get("*", checkUser);
