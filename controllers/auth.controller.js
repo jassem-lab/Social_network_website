@@ -8,6 +8,7 @@ const CreateToken = (id) => {
     expiresIn: maxAge,
   });
 };
+
 // SignIn
 
 module.exports.signUp = async (req, res) => {
