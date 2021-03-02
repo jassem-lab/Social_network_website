@@ -17,7 +17,15 @@ module.exports.signInErrors = (err) => {
 
   if (err.message.includes("email is already taken"))
     errors.email = "Unkown Email";
-  if ((err.message.password = "Wrong Password !"))
-  
+  if ((err.message.password = "Wrong Password !")) return errors;
+};
+
+module.exports.uploadErrors = (err) => {
+  let errors = { format: "", maxSize: "" };
+
+  if (err.message.includes("invalid file")) erors.format = "wrong Format ! ";
+  if (err.message.includes("max size"))
+    errors.maxSize = "File size is more than 500Ko";
+
   return errors;
 };
