@@ -48,6 +48,7 @@ module.exports.createPost = async (req, res) => {
     comments: [],
   });
 
+  
   try {
     const post = await newPost.save();
     return res.status(201).json(post);
